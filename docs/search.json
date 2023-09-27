@@ -14,8 +14,15 @@
     "text": "Note\n\n\n\nWork in progress.\n\nprovide background\ngoal/structure of project/report"
   },
   {
-    "objectID": "80_data-preparation.html",
-    "href": "80_data-preparation.html",
+    "objectID": "80_conclusions.html",
+    "href": "80_conclusions.html",
+    "title": "2  Conclusions",
+    "section": "",
+    "text": "Note\n\n\n\nThis Technical Note is still under active development.\n\nsummarise what was shown\nprovide pointers for how to download/access the data/reproduce the study\nopen research / next problems\nconcluding remarks"
+  },
+  {
+    "objectID": "90_data-preparation.html",
+    "href": "90_data-preparation.html",
     "title": "Data Preparation",
     "section": "",
     "text": "Note\n\n\n\nThis section is under development. The idea is to provide a pipeline to reproduce the examples.\n\n\n\ndownload data from OSN and/or package Zenodoo\nsubset trajectory data for study airports\nextract / label trajectories\ndetect level segments"

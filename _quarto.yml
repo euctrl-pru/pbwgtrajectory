@@ -11,11 +11,15 @@ book:
     - index.qmd
     - 10_introduction.qmd
 #   - intro.qmd
-#    - summary.qmd
-    - 80_data-preparation.qmd
+    - 80_conclusions.qmd
+    - 90_data-preparation.qmd
     - 99_references.qmd
   repo-url: https://github.com/euctrl-pru/pbwgtrajectory
   downloads: [pdf, docx]
+
+comments:
+  utterances:
+    repo: ttps://github.com/euctrl-pru/pbwgtrajectory
 
 bibliography: references.bib
 
