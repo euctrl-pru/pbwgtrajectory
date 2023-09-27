@@ -9,6 +9,7 @@ book:
 #  date: ""
   chapters:
     - index.qmd
+    - 10_introduction.qmd
 #   - intro.qmd
 #    - summary.qmd
     - 80_data-preparation.qmd
