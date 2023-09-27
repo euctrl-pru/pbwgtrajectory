@@ -8,4 +8,6 @@ This repository/workspace serves as a joint playground in support of the **initi
 development and refinement and PBWG discussions on developing/refining methods to
 assess vertical flight efficiency.
 
-
+The work is supported by *quarto* and the *R/RStudio* eco-system. 
+To support readability of the code by non-programmers and analysts, the development is based on the *{tidyverse}* family of packages.   
+The current development draft can be accessed via https://euctrl-pru.github.io/pbwgtrajectory/.
