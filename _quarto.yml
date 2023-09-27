@@ -1,0 +1,28 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Trajectory-based Operational Performance Assessment"
+  subtitle: "(initial) Vertical Flight Efficiency"
+  author: "PBWG"
+#  date: ""
+  chapters:
+    - index.qmd
+#   - intro.qmd
+#    - summary.qmd
+    - 80_data-preparation.qmd
+    - 99_references.qmd
+  repo-url: https://github.com/euctrl-pru/pbwgtrajectory
+  downloads: [pdf, docx]
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreport
+  docx: default
+#  epub:
+#    cover-image: cover.png

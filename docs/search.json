@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Trajectory-based Operational Performance Assessment",
+    "section": "",
+    "text": "“Preamble/Front Matters”\nThe PBWG is a multi-regional group aiming to foster the application of performance monitoring and benchmarking of air navigation services and air transport under the ICAO GANP.\nThis Technical Note summarises the (initial) development and refinement of trajectory based analytics.\nAs a first application use case, the group is interested in studying vertical flight efficiency in the arrival and departure phase.\nTo support the development an open trajectory data set is established for a representative subset of the operations studied by the PBWG.\nThe “playground” data is based on a regular data dump provided by Opensky Network(Schäfer et al. 2014).\n\n\n\n\nSchäfer, Matthias, Martin Strohmeier, Vincent Linders, Ivan Martinovic, and Matthias Wilhelm. 2014. “Bringing up OpenSky: A Large-Scale ADS-b Sensor Network for Research.” In, 8394."
+  },
+  {
+    "objectID": "80_data-preparation.html",
+    "href": "80_data-preparation.html",
+    "title": "Data Preparation",
+    "section": "",
+    "text": "Note\n\n\n\nThis section is under development. The idea is to provide a pipeline to reproduce the examples.\n\n\n\ndownload data from OSN and/or package Zenodoo\nsubset trajectory data for study airports\nextract / label trajectories\ndetect level segments"
+  },
+  {
+    "objectID": "99_references.html",
+    "href": "99_references.html",
+    "title": "References",
+    "section": "",
+    "text": "Schäfer, Matthias, Martin Strohmeier, Vincent Linders, Ivan Martinovic,\nand Matthias Wilhelm. 2014. “Bringing up OpenSky: A Large-Scale\nADS-b Sensor Network for Research.” In, 8394."
+  }
+]

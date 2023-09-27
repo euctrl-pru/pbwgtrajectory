@@ -1,0 +1,10 @@
+# Data Preparation {.unnumbered}
+
+::: {.callout-note}
+This section is under development. The idea is to provide a pipeline to reproduce the examples.
+:::
+
+* download data from OSN and/or package Zenodoo
+* subset trajectory data for study airports
+* extract / label trajectories
+* detect level segments

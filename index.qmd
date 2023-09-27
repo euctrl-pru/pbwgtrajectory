@@ -1,0 +1,9 @@
+# "Preamble/Front Matters" {.unnumbered}
+
+The PBWG is a multi-regional group aiming to foster the application of performance monitoring and benchmarking of air navigation services and air transport under the ICAO GANP.
+
+This Technical Note summarises the (initial) development and refinement of trajectory based analytics.\
+As a first application use case, the group is interested in studying **vertical flight efficiency** in the arrival and departure phase.
+
+To support the development an open trajectory data set is established for a representative subset of the operations studied by the PBWG.\
+The "playground" data is based on a regular data dump provided by Opensky Network[@schaeferosn2014].
