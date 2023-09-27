@@ -17,15 +17,20 @@ book:
   repo-url: https://github.com/euctrl-pru/pbwgtrajectory
   downloads: [pdf, docx]
 
-comments:
-  utterances:
-    repo: ttps://github.com/euctrl-pru/pbwgtrajectory
+# check blog and how to install
+# https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html
+# https://github.com/apps/utterances/installations/select_target
+# requires separate repo ... adds comment field at bottom
+
 
 bibliography: references.bib
 
 format:
   html:
     theme: cosmo
+    comments:
+      utterances:
+        repo: euctrl-pru/pbwgtrajectory
   pdf:
     documentclass: scrreport
   docx: default
