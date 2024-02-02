@@ -228,3 +228,57 @@ deps <- arrs_deps |>
   dplyr::filter(PHASE == "DEP")
 ```
 
+Filter the toydata for arrs and plot them
+
+```{r}
+arr_trjs <- toy_data |> 
+  dplyr::left_join(arrs, by = dplyr::join_by(ICAO24, FLTID)) |>
+  dplyr::filter(PHASE == "ARR")
+
+arr_trjs |> ggplot() +
+  geom_point(aes(x = LON, y = LAT), size = 0.1)
+```
+
+Runway assignment
+
+```{r}
+rwy_cones <- this_rwys |> centerline_cone()  
+
+fill_h3_poly <- function(.sf_poly, .res = 10){
+    .sf_poly |> 
+        h3::polyfill(res = .res) |> 
+        h3::h3_to_geo_boundary_sf()
+}
+
+rwy_cones_h3 <- rwy_cones |>
+  dplyr::group_by(REF) |> 
+  dplyr::group_modify(.f = ~ fill_h3_poly(.) ) |> 
+  sf::st_as_sf()
+
+# check what we have
+ggplot() +
+  geom_sf(data = rwy_cones, aes(fill = REF)) +
+  geom_sf(data = rwy_cones_h3, aes(fill = NA)) +
+  coord_sf(xlim = c(-0.8,-0.1), ylim = c(51.425,51.525))
+```
+
+Trim arrivals to last x-secs
+* aircraft on final 160kts = 160 NM / 60 min = 16/6 NM/min =~ 2.5 NM/min ==> 10NM ~ 4 min
+
+```{r}
+arr_rwy_association <- 
+arr_trjs |> dplyr::select(TIME, ICAO24, FLTID, LAT, LON) |> dplyr::mutate(H3 = h3::geo_to_h3(cbind(LAT, LON), res = 10)) |> dplyr::left_join(rwy_cones_h3 |> dplyr::rename(H3 = h3_index)|> sf::st_drop_geometry()) |> dplyr::filter(!is.na(REF)) |> dplyr::group_by(ICAO24, FLTID, REF) |> dplyr::summarise(N = dplyr::n(), .groups = "drop") |> dplyr::group_by(ICAO24, FLTID) |> dplyr::mutate(GRP = dplyr::cur_group_id()) |> dplyr::ungroup()
+```
+
+```{r}
+arr_trjs |> 
+    dplyr::mutate(ID = paste0(ICAO24,"-","FLTID")) |> 
+    dplyr::filter(ID %in% ( 
+             arr_rwy_association |> 
+                 dplyr::filter(N < 10) |> 
+                 dplyr::mutate(ID = paste0(ICAO24,"-","FLTID")) |> 
+                 dplyr::pull(ID) 
+             )
+    ) |> ggplot() + geom_point(aes(x = LON, y = LAT), size = 0.2)
+```
+
