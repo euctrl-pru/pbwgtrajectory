@@ -267,18 +267,85 @@ Trim arrivals to last x-secs
 
 ```{r}
 arr_rwy_association <- 
-arr_trjs |> dplyr::select(TIME, ICAO24, FLTID, LAT, LON) |> dplyr::mutate(H3 = h3::geo_to_h3(cbind(LAT, LON), res = 10)) |> dplyr::left_join(rwy_cones_h3 |> dplyr::rename(H3 = h3_index)|> sf::st_drop_geometry()) |> dplyr::filter(!is.na(REF)) |> dplyr::group_by(ICAO24, FLTID, REF) |> dplyr::summarise(N = dplyr::n(), .groups = "drop") |> dplyr::group_by(ICAO24, FLTID) |> dplyr::mutate(GRP = dplyr::cur_group_id()) |> dplyr::ungroup()
+  arr_trjs |> 
+  dplyr::select(TIME, ICAO24, FLTID, LAT, LON) |> 
+  dplyr::mutate(H3 = h3::geo_to_h3(cbind(LAT, LON), res = 10)) |>
+  dplyr::left_join(
+      rwy_cones_h3 |> 
+        dplyr::rename(H3 = h3_index)|> 
+        sf::st_drop_geometry()
+      ) |> 
+  dplyr::filter(!is.na(REF)) |> 
+  dplyr::group_by(ICAO24, FLTID, REF) |> 
+  dplyr::summarise(N = dplyr::n(), .groups = "drop") |> 
+  dplyr::group_by(ICAO24, FLTID) |> 
+  dplyr::mutate(GRP = dplyr::cur_group_id()) |> 
+  dplyr::ungroup()
 ```
 
 ```{r}
 arr_trjs |> 
-    dplyr::mutate(ID = paste0(ICAO24,"-","FLTID")) |> 
-    dplyr::filter(ID %in% ( 
-             arr_rwy_association |> 
-                 dplyr::filter(N < 10) |> 
-                 dplyr::mutate(ID = paste0(ICAO24,"-","FLTID")) |> 
-                 dplyr::pull(ID) 
-             )
-    ) |> ggplot() + geom_point(aes(x = LON, y = LAT), size = 0.2)
+  dplyr::mutate(UID = paste0(ICAO24, "-", FLTID)) |> 
+  dplyr::filter(UID %in% (
+        arr_rwy_association |> 
+          dplyr::filter(N <= 3) |> 
+          dplyr::mutate(UID = paste0(ICAO24, "-", FLTID)) |> 
+          dplyr::pull(UID))
+        ) |> 
+  ggplot() + 
+  geom_point(aes(x = LON, y = LAT, color = UID), size = 0.1) + 
+  theme(legend.position = "top", plot.title.position = "plot") +
+  labs(title = "Data Cleaning - check for flights with small hits in runway area")
 ```
 
+
+```{r}
+arr_trjs2 <- arr_trjs |> 
+    dplyr::mutate(UID = paste0(ICAO24,"-", FLTID)) |> 
+    dplyr::left_join( 
+             arr_rwy_association |> 
+                 dplyr::mutate(UID = paste0(ICAO24,"-", FLTID)) 
+             , by = dplyr::join_by(ICAO24, FLTID, UID))
+```
+
+### Determine cut-off point for coverage / gate on final
+
+trajectory in h3
+
+arr_trjs2 = arr_trjs2 |> 
+  dplyr::select(UID, TIME, ICAO24, FLTID, LAT, LON, ALT, RWY = REF) |> 
+  dplyr::mutate(H3 = h3::geo_to_h3(cbind(LAT, LON), res = 10)) 
+  
+gate_5NM_h3 <- gate_5NM |> sf::st_buffer(dist = 500) |> 
+    dplyr::group_by(REF) |> 
+    dplyr::group_modify(.f = ~ fill_h3_poly(.) ) |> 
+    sf::st_as_sf() |> 
+    dplyr::ungroup() |> 
+    dplyr::mutate(GATE = paste0(REF, "-5NM")) |> 
+    dplyr::rename(H3 = h3_index)
+    
+
+Some confusion ==> clean better & assign phase 
+> arr_trjs2 |> dplyr::inner_join(gate_5NM_h3 |> sf::st_drop_geometry(), by = dplyr::join_by(H3)) |> dplyr::filter(RWY != REF)
+# A tibble: 17 × 11
+   UID            TIME                ICAO24 FLTID     LAT    LON   ALT RWY   H3      REF   GATE 
+   <chr>          <dttm>              <chr>  <chr>   <dbl>  <dbl> <dbl> <chr> <chr>   <chr> <chr>
+ 1 4005a6-BAW20R  2019-08-01 05:28:50 4005a6 BAW20R   51.5 -0.305 1575. 27R   8a194a… 27L   27L-…
+ 2 406ec9-BAW45B  2019-08-01 05:30:40 406ec9 BAW45B   51.5 -0.296 1675. 27R   8a194a… 27L   27L-…
+ 3 406a34-BAW246  2019-08-01 05:39:40 406a34 BAW246   51.5 -0.303 1575. 27R   8a194a… 27L   27L-…
+ 4 40093e-SHT1467 2019-08-01 07:22:50 40093e SHT1467  51.5 -0.300 1550. 27R   8a194a… 27L   27L-…
+ 5 400afe-SHT19S  2019-08-01 07:25:10 400afe SHT19S   51.5 -0.295 1575. 27R   8a194a… 27L   27L-…
+ 6 4ca15d-EIN15M  2019-08-01 08:09:40 4ca15d EIN15M   51.5 -0.618 3400. 09L   8a195d… 09R   09R-…
+ 7 4076cd-SHT3P   2019-08-01 08:28:20 4076cd SHT3P    51.5 -0.299 1625. 27R   8a194a… 27L   27L-…
+ 8 400804-BAW982G 2019-08-01 10:59:50 400804 BAW982G  51.5 -0.305 1500. 09L   8a194a… 27L   27L-…
+ 9 406e10-VIR42X  2019-08-01 12:50:30 406e10 VIR42X   51.5 -0.300 1550. 27R   8a194a… 27L   27L-…
+10 400613-BAW38P  2019-08-01 12:54:10 400613 BAW38P   51.5 -0.304 1525. 27R   8a194a… 27L   27L-…
+11 4076e8-BAW9110 2019-08-01 13:22:50 4076e8 BAW9110  51.5 -0.294 1650. 09L   8a194a… 27L   27L-…
+12 4076e8-BAW9110 2019-08-01 13:22:50 4076e8 BAW9110  51.5 -0.294 1650. 09R   8a194a… 27L   27L-…
+13 4076e8-BAW9110 2019-08-01 13:23:00 4076e8 BAW9110  51.5 -0.306 1525. 09L   8a194a… 27L   27L-…
+14 4076e8-BAW9110 2019-08-01 13:23:00 4076e8 BAW9110  51.5 -0.306 1525. 09R   8a194a… 27L   27L-…
+15 4692d0-AEE2EG  2019-08-01 14:33:30 4692d0 AEE2EG   51.5 -0.292 1675. 27L   8a194a… 27R   27R-…
+16 4692d0-AEE2EG  2019-08-01 14:33:40 4692d0 AEE2EG   51.5 -0.304 1525. 27L   8a194a… 27R   27R-…
+17 4009c7-BAW481B 2019-08-01 18:22:30 4009c7 BAW481B  51.5 -0.301 1525. 27L   8a194a… 27R   27R-…
+
+ggplot(data = arr_trjs2 |> dplyr::filter(UID %in% c("4692d0-AEE2EG","4076e8-BAW9110","4005a6-BAW20R","406ec9-BAW45B")) ) + geom_point(aes(x = LON, y = LAT, color = UID), size = 0.5) + xlim(-1,1) + ylim(51.25,51.75)

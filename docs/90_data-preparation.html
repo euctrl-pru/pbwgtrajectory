@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -47,7 +81,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +96,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -71,12 +112,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./90_data-preparation.html">Data Preparation</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./90_data-preparation.html">Data Preparation</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -86,12 +127,12 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Trajectory-based Operational Performance Assessment</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/euctrl-pru/pbwgtrajectory" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/euctrl-pru/pbwgtrajectory" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -152,10 +193,22 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#toy-data" id="toc-toy-data" class="nav-link active" data-scroll-target="#toy-data">Toy Data</a></li>
+  <li><a href="#subsetting-arrival-and-departure-trajectories" id="toc-subsetting-arrival-and-departure-trajectories" class="nav-link" data-scroll-target="#subsetting-arrival-and-departure-trajectories">Subsetting Arrival and Departure Trajectories</a>
+  <ul class="collapse">
+  <li><a href="#airport-polygon" id="toc-airport-polygon" class="nav-link" data-scroll-target="#airport-polygon">Airport Polygon</a></li>
+  <li><a href="#subset-arrivals-and-departures" id="toc-subset-arrivals-and-departures" class="nav-link" data-scroll-target="#subset-arrivals-and-departures">Subset Arrivals and Departures</a></li>
+  <li><a href="#determine-cut-off-point-for-coverage-gate-on-final" id="toc-determine-cut-off-point-for-coverage-gate-on-final" class="nav-link" data-scroll-target="#determine-cut-off-point-for-coverage-gate-on-final">Determine cut-off point for coverage / gate on final</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -175,8 +228,14 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
 
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -196,8 +255,342 @@ Note
 <li>extract / label trajectories</li>
 <li>detect level segments</li>
 </ul>
+<section id="toy-data" class="level2">
+<h2 class="anchored" data-anchor-id="toy-data">Toy Data</h2>
+<p>For the model development, we create some toy data based on a dataset retrieved from OSN. The data is stored locally (in a central folder one level up). It will be read and then a subset created for this section.</p>
+<ul>
+<li>read in tar-dump</li>
+<li>clean
+<ul>
+<li>rename/standardise variable names</li>
+<li>coerce meter -&gt; feet, time to ymd_hms</li>
+</ul>
+TODO - check for missing, fill and/or interpolate to 5 sec</li>
+</ul>
+<pre><code>pth_up   &lt;- here::here() |&gt; dirname()
+toy_date &lt;- "2019-08-01"
+pth_data &lt;- list.files(path = here::here(pth_up, "__DATA", "OSN-dumps"), pattern = toy_date, full.names = TRUE)
+
+source("./R/osn_read_tar.R")          # read OSN tar dump
+source("./R/osn_make_nice_names.R")   # standardise variable names
+source("./R/osn_clean_statevector.R") # steps to make OSN svs useful
+
+source("./R/coerce_meter_to_feet.R")  # m --&gt; ft
+source("./R/coerce_unixepoch_to_datetime.R") # xxxx --&gt; yyyymmdd hh:mm:ss
+
+# load all state vectors for chosen date
+# OSN dumps ~ hourly state vectors ==&gt; loop over all 24 files
+svs &lt;- purrr::map(.x = pth_data, .f = ~ read_osn_tar_file(.x)) |&gt; 
+  dplyr::bind_rows() |&gt; 
+  clean_osn_statevectors()</code></pre>
+<p>The toydata is built for EGLL, EHAM, and EDDF (for now).</p>
+<p>Battle-plan: read in ARP &amp; subset state vectors within radius (e.g.&nbsp;205NM) around ARP.</p>
+<p>Aerodrome information * TODO - query database and subset for study use –&gt; ARP, RWY thresholds * currently done by hand - stored in <code>./data/aip-arp-rwys.csv</code></p>
+<p>For the geo-spatial subsetting we use <code>{sf}</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load some AIP points</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>aip      <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"./data/aip-arp-rwys.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>this_arp <span class="ot">&lt;-</span> aip <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(ICAO <span class="sc">==</span> <span class="st">"EGLL"</span>, REF <span class="sc">==</span> <span class="st">"ARP"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"~/RProjects/PBWG-trajectory/R/cast_sf_utils.R"</span>) <span class="co"># utility functions</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"~/RProjects/PBWG-trajectory/R/spatial_subset_jormungand.R"</span>) <span class="co"># subset R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code># model building
+## pick one airport/ARP
+svs_apt  &lt;- subset_around_point(svs, this_arp)
+
+## save out for later re-use
+#arrow::write_parquet(svs_apt |&gt; sf::st_drop_geometry(), "./data/egll_205NM.parquet")
+
+## show-case
+plot_svs_apt &lt;- ggplot() + geom_sf(data = svs_apt, size = 0.1) +  
+  theme_minimal() +
+  theme(plot.title.position = "plot") +
+  labs(title = "State vectors - EGLL - 205NM")
+ggsave(plot = plot_svs_apt
+       , filename = "./figures/snapshot-egll-205NM.png"
+       , dpi = 320, bg = "white"
+       , width = 8, height = 5)</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"./figures/snapshot-egll-205NM.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-egll-205NM" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-egll-205NM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures/snapshot-egll-205NM.png" class="img-fluid figure-img" width="1280">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-egll-205NM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Snapshot of state vectors, EGLL, 205NM
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="subsetting-arrival-and-departure-trajectories" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-arrival-and-departure-trajectories">Subsetting Arrival and Departure Trajectories</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>with toy dataset –&gt; identify arrivals and departures –&gt; label trajectories (maybe before hand, clean trajectories ~ ensure no gaps, etc)</p>
+<p>then assign landing runway</p>
+<p>then determine characteristic points (e.g.&nbsp;crossings, level segments)</p>
+<p>STORE RESULTS IN EVENT-MILESTONE-LIST</p>
+</div>
+</div>
+<section id="airport-polygon" class="level3">
+<h3 class="anchored" data-anchor-id="airport-polygon">Airport Polygon</h3>
+<p>We define the airport polygon area as a convex hull based on the runway system.</p>
+<p>As a heuristic we can assume aircraft to land or take-off from an aerodrome operating within this convex hull (at altitudes close to the Field Elevation).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># runway system for EGLL</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>this_rwys <span class="ot">&lt;-</span> aip <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(ICAO <span class="sc">==</span> <span class="st">"EGLL"</span>, TYPE <span class="sc">==</span> <span class="st">"THR"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load utility functions "sf-ing" runway system stuff</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"~/RProjects/PBWG-trajectory/R/cast_sf_rwys.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><b>NOT FULLY SURE WHAT TO DO WITH THIS!</b></p>
+<p>The legacy packages maptools, rgdal, and rgeos, underpinning the sp package, which was just loaded, will retire in October 2023. Please refer to R-spatial evolution reports for details, especially https://r-spatial.org/r/2023/05/15/evolution4.html. It may be desirable to make the sf package available; package maintainers should consider adding sf to Suggests:. The sp package is now running under evolution status 2 (status 2 uses the sf package in place of rgdal)</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the thresholds</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>this_rwys_sf_pts <span class="ot">&lt;-</span> this_rwys <span class="sc">|&gt;</span> <span class="fu">cast_latlon_to_pts</span>(<span class="at">.drop_coord =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot thresholds</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> this_rwys_sf_pts, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"red"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># plot runways</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> this_rwys <span class="sc">|&gt;</span> <span class="fu">cast_rwy_ls</span>())</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot extended centerlines</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> this_rwys <span class="sc">|&gt;</span> <span class="fu">cast_rwy_ctr_line_ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,
+which was just loaded, will retire in October 2023.
+Please refer to R-spatial evolution reports for details, especially
+https://r-spatial.org/r/2023/05/15/evolution4.html.
+It may be desirable to make the sf package available;
+package maintainers should consider adding sf to Suggests:.
+The sp package is now running under evolution status 2
+     (status 2 uses the sf package in place of rgdal)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot thresholds and centerline</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> this_rwys_sf_pts, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> this_rwys <span class="sc">|&gt;</span> <span class="fu">cast_rwy_ctr_line_ls</span>(), <span class="fu">aes</span>(<span class="at">color =</span> REF))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>(p1 <span class="sc">+</span> p2) <span class="sc">/</span> (p3 <span class="sc">+</span> p4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="90_data-preparation_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Based on this, we can construct an “airport box” comprising the runway system and its extended centerlines.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>apt_box <span class="ot">&lt;-</span> this_rwys <span class="sc">|&gt;</span> <span class="fu">airport_centerline_box</span>()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>p_apt_box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> apt_box)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>p_apt_box</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="90_data-preparation_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can associate the airport box polygon with H3 indexes.</p>
+<p>Note: The H3 algorithm does not ensure <em>regular</em> hexagons based on the underlying projection choices made. For our purposes, we assume the H3 resolution to broadly respect regularity. Thus, hexagon edge length coincides with radius for the corner points.</p>
+<p>Resolution 8 ~ edge length 0.5314km Resolution 10 ~ 0.07586km Resolution 11 ~ 0.02866km</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>apt_box_h3 <span class="ot">&lt;-</span> h3<span class="sc">::</span><span class="fu">polyfill</span>(apt_box, <span class="at">res =</span> <span class="dv">8</span>) <span class="sc">|&gt;</span> h3<span class="sc">::</span><span class="fu">h3_to_geo_boundary_sf</span>() </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>p_apt_box <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> apt_box_h3, <span class="at">fill =</span> <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="90_data-preparation_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="subset-arrivals-and-departures" class="level3">
+<h3 class="anchored" data-anchor-id="subset-arrivals-and-departures">Subset Arrivals and Departures</h3>
+<p>Arrivals and departures are characterised by a runway operation. Thus, the heuristic builds on identifying statevectors (4D LAT/LON positions) at lower altitudes operating within the airport and its extended runway system area.</p>
+<p>We further assume ILS operations or associated RNAV overlay operations. This assumes a glidepath of 3 degrees, resulting in an approx 1000ft altitude change over 3NM. Accordingly, an arrival flight established on the glide path should be at 1000ft GND at 3NM to the ground point of intercept, 2000ft at 6NM, and 3000ft at 9NM. Departure flights might - depending on their weight - exhibit higher climb rates. However, for the initial climb out safety standards will ensure a stabilised attitude climb.</p>
+<p>From a brute-force perspective</p>
+<ul>
+<li>subset data to airport area and ALT = ELEV + 3500ft</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>toy_data <span class="ot">&lt;-</span> arrow<span class="sc">::</span><span class="fu">read_parquet</span>(<span class="st">"./data/egll_205NM.parquet"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># spatial subset for outer airport runway system box</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>at_apt   <span class="ot">&lt;-</span> toy_data <span class="sc">|&gt;</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spatial_subset_jormungand</span>(apt_box) <span class="sc">|&gt;</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ALT <span class="sc">&lt;</span> this_arp<span class="sc">$</span>GEOM_ALT <span class="sc">+</span> <span class="dv">3500</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>arrs_deps <span class="ot">&lt;-</span> at_apt <span class="sc">|&gt;</span> </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(ICAO24, FLTID) <span class="sc">|&gt;</span> </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(TIME <span class="sc">%in%</span> <span class="fu">c</span>(<span class="fu">max</span>(TIME), <span class="fu">min</span>(TIME))) <span class="sc">|&gt;</span> </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(TIME, <span class="at">.by_group =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">SEQ   =</span> dplyr<span class="sc">::</span><span class="fu">row_number</span>()</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    , <span class="at">PHASE =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>( dplyr<span class="sc">::</span><span class="fu">first</span>(ALT) <span class="sc">&gt;</span> dplyr<span class="sc">::</span><span class="fu">lead</span>(ALT) <span class="sc">~</span> <span class="st">"ARR"</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                               ,dplyr<span class="sc">::</span><span class="fu">first</span>(ALT) <span class="sc">&lt;</span> dplyr<span class="sc">::</span><span class="fu">lead</span>(ALT) <span class="sc">~</span> <span class="st">"DEP"</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                              )</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span> </span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(TIME, ICAO24, FLTID, LAT, LON, ALT, SEQ, PHASE, dplyr<span class="sc">::</span><span class="fu">everything</span>())</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>arrs <span class="ot">&lt;-</span> arrs_deps <span class="sc">|&gt;</span> </span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ICAO24, FLTID, PHASE) <span class="sc">|&gt;</span> </span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(PHASE <span class="sc">==</span> <span class="st">"ARR"</span>)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>deps <span class="ot">&lt;-</span> arrs_deps <span class="sc">|&gt;</span> </span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ICAO24, FLTID, PHASE) <span class="sc">|&gt;</span> </span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(PHASE <span class="sc">==</span> <span class="st">"DEP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Filter the toydata for arrs and plot them</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>arr_trjs <span class="ot">&lt;-</span> toy_data <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(arrs, <span class="at">by =</span> dplyr<span class="sc">::</span><span class="fu">join_by</span>(ICAO24, FLTID)) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(PHASE <span class="sc">==</span> <span class="st">"ARR"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>arr_trjs <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> LON, <span class="at">y =</span> LAT), <span class="at">size =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="90_data-preparation_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Runway assignment</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>rwy_cones <span class="ot">&lt;-</span> this_rwys <span class="sc">|&gt;</span> <span class="fu">centerline_cone</span>()  </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>fill_h3_poly <span class="ot">&lt;-</span> <span class="cf">function</span>(.sf_poly, <span class="at">.res =</span> <span class="dv">10</span>){</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    .sf_poly <span class="sc">|&gt;</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        h3<span class="sc">::</span><span class="fu">polyfill</span>(<span class="at">res =</span> .res) <span class="sc">|&gt;</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        h3<span class="sc">::</span><span class="fu">h3_to_geo_boundary_sf</span>()</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>rwy_cones_h3 <span class="ot">&lt;-</span> rwy_cones <span class="sc">|&gt;</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(REF) <span class="sc">|&gt;</span> </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_modify</span>(<span class="at">.f =</span> <span class="sc">~</span> <span class="fu">fill_h3_poly</span>(.) ) <span class="sc">|&gt;</span> </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_as_sf</span>()</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># check what we have</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rwy_cones, <span class="fu">aes</span>(<span class="at">fill =</span> REF)) <span class="sc">+</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rwy_cones_h3, <span class="fu">aes</span>(<span class="at">fill =</span> <span class="cn">NA</span>)) <span class="sc">+</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.8</span>,<span class="sc">-</span><span class="fl">0.1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">51.425</span>,<span class="fl">51.525</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="90_data-preparation_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Trim arrivals to last x-secs * aircraft on final 160kts = 160 NM / 60 min = 16/6 NM/min =~ 2.5 NM/min ==&gt; 10NM ~ 4 min</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>arr_rwy_association <span class="ot">&lt;-</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  arr_trjs <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(TIME, ICAO24, FLTID, LAT, LON) <span class="sc">|&gt;</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">H3 =</span> h3<span class="sc">::</span><span class="fu">geo_to_h3</span>(<span class="fu">cbind</span>(LAT, LON), <span class="at">res =</span> <span class="dv">10</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      rwy_cones_h3 <span class="sc">|&gt;</span> </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">H3 =</span> h3_index)<span class="sc">|&gt;</span> </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>()</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">|&gt;</span> </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(REF)) <span class="sc">|&gt;</span> </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(ICAO24, FLTID, REF) <span class="sc">|&gt;</span> </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">N =</span> dplyr<span class="sc">::</span><span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(ICAO24, FLTID) <span class="sc">|&gt;</span> </span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">GRP =</span> dplyr<span class="sc">::</span><span class="fu">cur_group_id</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(H3)`</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>arr_trjs <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">UID =</span> <span class="fu">paste0</span>(ICAO24, <span class="st">"-"</span>, FLTID)) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(UID <span class="sc">%in%</span> (</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        arr_rwy_association <span class="sc">|&gt;</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>          dplyr<span class="sc">::</span><span class="fu">filter</span>(N <span class="sc">&lt;=</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>          dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">UID =</span> <span class="fu">paste0</span>(ICAO24, <span class="st">"-"</span>, FLTID)) <span class="sc">|&gt;</span> </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>          dplyr<span class="sc">::</span><span class="fu">pull</span>(UID))</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span> </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> LON, <span class="at">y =</span> LAT, <span class="at">color =</span> UID), <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span> </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>, <span class="at">plot.title.position =</span> <span class="st">"plot"</span>) <span class="sc">+</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Data Cleaning - check for flights with small hits in runway area"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="90_data-preparation_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>arr_trjs2 <span class="ot">&lt;-</span> arr_trjs <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">UID =</span> <span class="fu">paste0</span>(ICAO24,<span class="st">"-"</span>, FLTID)) <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">left_join</span>( </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>             arr_rwy_association <span class="sc">|&gt;</span> </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">UID =</span> <span class="fu">paste0</span>(ICAO24,<span class="st">"-"</span>, FLTID)) </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>             , <span class="at">by =</span> dplyr<span class="sc">::</span><span class="fu">join_by</span>(ICAO24, FLTID, UID))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dplyr::left_join(dplyr::mutate(arr_trjs, UID = paste0(ICAO24, : Detected an unexpected many-to-many relationship between `x` and `y`.
+ℹ Row 6680 of `x` matches multiple rows in `y`.
+ℹ Row 346 of `y` matches multiple rows in `x`.
+ℹ If a many-to-many relationship is expected, set `relationship =
+  "many-to-many"` to silence this warning.</code></pre>
+</div>
+</div>
+</section>
+<section id="determine-cut-off-point-for-coverage-gate-on-final" class="level3">
+<h3 class="anchored" data-anchor-id="determine-cut-off-point-for-coverage-gate-on-final">Determine cut-off point for coverage / gate on final</h3>
+<p>trajectory in h3</p>
+<p>arr_trjs2 = arr_trjs2 |&gt; dplyr::select(UID, TIME, ICAO24, FLTID, LAT, LON, ALT, RWY = REF) |&gt; dplyr::mutate(H3 = h3::geo_to_h3(cbind(LAT, LON), res = 10))</p>
+<p>gate_5NM_h3 &lt;- gate_5NM |&gt; sf::st_buffer(dist = 500) |&gt; dplyr::group_by(REF) |&gt; dplyr::group_modify(.f = ~ fill_h3_poly(.) ) |&gt; sf::st_as_sf() |&gt; dplyr::ungroup() |&gt; dplyr::mutate(GATE = paste0(REF, “-5NM”)) |&gt; dplyr::rename(H3 = h3_index)</p>
+<p>Some confusion ==&gt; clean better &amp; assign phase &gt; arr_trjs2 |&gt; dplyr::inner_join(gate_5NM_h3 |&gt; sf::st_drop_geometry(), by = dplyr::join_by(H3)) |&gt; dplyr::filter(RWY != REF) # A tibble: 17 × 11 UID TIME ICAO24 FLTID LAT LON ALT RWY H3 REF GATE <chr> <dttm> <chr> <chr> <dbl> <dbl> <dbl> <chr> <chr> <chr> <chr> 1 4005a6-BAW20R 2019-08-01 05:28:50 4005a6 BAW20R 51.5 -0.305 1575. 27R 8a194a… 27L 27L-… 2 406ec9-BAW45B 2019-08-01 05:30:40 406ec9 BAW45B 51.5 -0.296 1675. 27R 8a194a… 27L 27L-… 3 406a34-BAW246 2019-08-01 05:39:40 406a34 BAW246 51.5 -0.303 1575. 27R 8a194a… 27L 27L-… 4 40093e-SHT1467 2019-08-01 07:22:50 40093e SHT1467 51.5 -0.300 1550. 27R 8a194a… 27L 27L-… 5 400afe-SHT19S 2019-08-01 07:25:10 400afe SHT19S 51.5 -0.295 1575. 27R 8a194a… 27L 27L-… 6 4ca15d-EIN15M 2019-08-01 08:09:40 4ca15d EIN15M 51.5 -0.618 3400. 09L 8a195d… 09R 09R-… 7 4076cd-SHT3P 2019-08-01 08:28:20 4076cd SHT3P 51.5 -0.299 1625. 27R 8a194a… 27L 27L-… 8 400804-BAW982G 2019-08-01 10:59:50 400804 BAW982G 51.5 -0.305 1500. 09L 8a194a… 27L 27L-… 9 406e10-VIR42X 2019-08-01 12:50:30 406e10 VIR42X 51.5 -0.300 1550. 27R 8a194a… 27L 27L-… 10 400613-BAW38P 2019-08-01 12:54:10 400613 BAW38P 51.5 -0.304 1525. 27R 8a194a… 27L 27L-… 11 4076e8-BAW9110 2019-08-01 13:22:50 4076e8 BAW9110 51.5 -0.294 1650. 09L 8a194a… 27L 27L-… 12 4076e8-BAW9110 2019-08-01 13:22:50 4076e8 BAW9110 51.5 -0.294 1650. 09R 8a194a… 27L 27L-… 13 4076e8-BAW9110 2019-08-01 13:23:00 4076e8 BAW9110 51.5 -0.306 1525. 09L 8a194a… 27L 27L-… 14 4076e8-BAW9110 2019-08-01 13:23:00 4076e8 BAW9110 51.5 -0.306 1525. 09R 8a194a… 27L 27L-… 15 4692d0-AEE2EG 2019-08-01 14:33:30 4692d0 AEE2EG 51.5 -0.292 1675. 27L 8a194a… 27R 27R-… 16 4692d0-AEE2EG 2019-08-01 14:33:40 4692d0 AEE2EG 51.5 -0.304 1525. 27L 8a194a… 27R 27R-… 17 4009c7-BAW481B 2019-08-01 18:22:30 4009c7 BAW481B 51.5 -0.301 1525. 27L 8a194a… 27R 27R-…</chr></chr></chr></chr></dbl></dbl></dbl></chr></chr></dttm></chr></p>
+<p>ggplot(data = arr_trjs2 |&gt; dplyr::filter(UID %in% c(“4692d0-AEE2EG”,“4076e8-BAW9110”,“4005a6-BAW20R”,“406ec9-BAW45B”)) ) + geom_point(aes(x = LON, y = LAT, color = UID), size = 0.5) + xlim(-1,1) + ylim(51.25,51.75)</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -279,10 +672,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -292,8 +684,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -306,6 +707,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -349,6 +869,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -374,6 +895,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -437,17 +984,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./80_conclusions.html" class="pagination-link">
+      <a href="./80_conclusions.html" class="pagination-link  aria-label=" &lt;span="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Conclusions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./99_references.html" class="pagination-link">
+      <a href="./99_references.html" class="pagination-link" aria-label="References">
         <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
